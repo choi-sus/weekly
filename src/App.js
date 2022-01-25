@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import { Route } from "react-router-dom";
+import Weekly from './Weekly';
+import Home from './Home';
 
 function App() {
+  const [week, weeekfo] = useState(["월", "화", "수", "목", "금", "토", "일"]);
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Route exact path="/">
+        <Home week={week}></Home>
+      </Route>
+      <Route path="/weekly/:id">
+        <Weekly week={week}></Weekly>
+      </Route>
     </div>
   );
 }
